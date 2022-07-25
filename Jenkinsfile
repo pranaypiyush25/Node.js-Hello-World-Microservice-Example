@@ -6,6 +6,7 @@ pipeline {
     agent any
     tools {
     nodejs 'nodejs'
+    docker 'docker'
 }
     stages {
         stage('git') {
@@ -26,14 +27,6 @@ pipeline {
                 sh 'npm test'
             }
         }
-        stage('Initialize') {
-        steps{
-            script{
-                def dockerHome = tool 'docker'
-                env.PATH = "${dockerHome}/bin:${env.PATH}"
-            }
-        }
-    }
         stage('version')
         {
             steps{
