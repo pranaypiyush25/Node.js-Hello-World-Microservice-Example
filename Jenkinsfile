@@ -33,7 +33,7 @@ pipeline {
                 sh 'docker --version'
             }
         }
-        stage('Building image') {
+        stage('Docker Build') {
       steps{
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
