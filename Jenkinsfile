@@ -36,6 +36,22 @@ pipeline {
                   dockerImage = docker.build registry + ":$BUILD_NUMBER"
             }
         }
+            
+        stage('Deploy Image') {
+      steps{
+         script {
+            docker.withRegistry('https://registry.hub.docker.com', registryCredential ) {
+            dockerImage.push("${env.BUILD_NUMBER}")            
+            dockerImage.push("latest")  
+          }
+        }
+      }
+    }
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $registry:$BUILD_NUMBER"
+      }
+    }
       }
     }
 }
