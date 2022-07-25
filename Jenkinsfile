@@ -6,7 +6,6 @@ pipeline {
     agent any
     tools {
     nodejs 'nodejs'
-    docker 'docker'
 }
     stages {
         stage('Git Clone'){
