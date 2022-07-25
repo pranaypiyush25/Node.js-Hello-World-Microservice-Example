@@ -9,7 +9,7 @@ pipeline {
     docker 'docker'
 }
     stages {
-        stage('Git Clone') {
+        stage('Git Clone'){
             steps {
                 echo 'Cloning Git Repo'
                 git 'https://github.com/pranaypiyush25/Node.js-Hello-World-Microservice-Example.git'
@@ -21,24 +21,22 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Test')
-        {
+        stage('Test'){
             steps{
                 sh 'npm test'
             }
         }
-        stage('version')
-        {
+        stage('version'){
             steps{
                 sh 'docker --version'
             }
         }
-        stage('Docker Build') {
-      steps{
-        script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        stage('Docker Build'){
+            steps{
+                script{
+                  dockerImage = docker.build registry + ":$BUILD_NUMBER"
+            }
         }
-      }
       }
     }
 }
