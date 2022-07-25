@@ -15,13 +15,13 @@ pipeline {
                 git 'https://github.com/pranaypiyush25/Node.js-Hello-World-Microservice-Example.git'
             }
         }
-        stage('Installing npm'){
+        stage('Install dependencies'){
             steps{
                 echo 'started npm install'
                 sh 'npm install'
             }
         }
-        stage('test')
+        stage('Test')
         {
             steps{
                 sh 'npm test'
