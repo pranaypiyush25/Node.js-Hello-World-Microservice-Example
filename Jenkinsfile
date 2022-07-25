@@ -9,13 +9,13 @@ pipeline {
     docker 'docker'
 }
     stages {
-        stage('git') {
+        stage('Git Clone') {
             steps {
-                echo 'cloning git'
+                echo 'Cloning Git Repo'
                 git 'https://github.com/pranaypiyush25/Node.js-Hello-World-Microservice-Example.git'
             }
         }
-        stage('install npm'){
+        stage('Installing npm'){
             steps{
                 echo 'started npm install'
                 sh 'npm install'
