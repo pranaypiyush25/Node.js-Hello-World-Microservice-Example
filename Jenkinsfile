@@ -12,7 +12,7 @@ pipeline {
         stage('git') {
             steps {
                 echo 'cloning git'
-                git credentialsId: '79504c40-37cf-484b-8f23-4e27b24a6721', url: 'https://github.com/pranaypiyush25/Node.js-Hello-World-Microservice-Example'
+                git 'https://github.com/pranaypiyush25/Node.js-Hello-World-Microservice-Example.git'
             }
         }
         stage('install npm'){
